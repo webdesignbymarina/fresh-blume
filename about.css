@@ -1,0 +1,109 @@
+header {
+  margin: auto;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keeps logo + nav centered as a whole */
+  gap: 0px;               /* spacing between logo & nav */
+  width: 100%;
+  margin: auto;
+  /* padding-top: 30px; */
+}
+
+.logo {
+ background: rgba(255, 255, 255, 0.7);
+ border-radius: 12px;
+ margin-left: 90px;
+}
+
+/* NAVIGATION BAR */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  margin:  auto;
+  padding: 12px 24px; 
+  background: rgba(255, 255, 255, 0.7);  
+    /* optional nice extras */
+  backdrop-filter: blur(6px);     /* subtle glass effect */
+  border-radius: 12px;             /* smooth edges */
+  width: fit-content;
+  margin: auto;
+}
+
+/* NAV LINKS */
+.nav > ul {
+  display: flex;
+  justify-content:space-around;
+  list-style: none;
+  gap: 40px;
+  margin-right: 10px;
+  margin-left: -30px;
+  width: fit-content;
+}
+
+
+.nav a {
+    text-decoration: none;
+    color: inherit; /* Keeps default text color or allows hover styling */
+    font-size: 18px;
+}
+
+.nav a.active {
+  color: rgb(172,225,175);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(172,225,175);
+}
+
+nav a:hover {
+  color: rgb(255,229,180);
+}
+
+/* === DROPDOWN MENU === */
+.dropdown {
+  position: relative;     /* positions child menu relative to this */
+}
+
+.dropdown-content {
+  display: none;          /* 🔹 Hide by default */
+  position: absolute;
+  top: 100%;              /* directly below the parent link */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  min-width: 180px;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* individual dropdown links */
+.dropdown-content li a {
+  display: block;
+  padding: 10px 15px;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-content li a:hover {
+  background-color: rgba(255, 229, 180, 0.233);
+}
+
+/* show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.zoe-pic {
+ height: 400px;
+ margin-top: 50px;
+}
+
+body {
+ background-color: rgb(244, 244, 236);
+}
