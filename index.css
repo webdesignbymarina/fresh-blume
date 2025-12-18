@@ -1,3 +1,116 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.services-wrapper {
+ margin-left: 10px;
+}
+
+.main-text {
+  font-size: 17px;
+}
+
+.indent {
+  text-indent: 2.5em;
+}
+
+.no-bullet {
+ list-style: none;
+}
+
+.my-bullet {
+ list-style: none;
+}
+
+h1 {
+ font-size: 35px;
+ font-weight: 700;
+ text-align: center;
+ margin-top: 40px;
+ margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+.services-no-offer {
+ font-style: italic;
+ font-weight: 400;
+}
+
+.spacer {
+ margin-top: 40px;
+}
+
+.jump-top {
+ display: block;
+ width: fit-content;
+ margin: 0 auto;
+ margin-top: 70px;
+
+ font-weight: 700;
+ text-align: center;
+ font-size: 20px;
+ color: black;
+ text-decoration: none;
+ background: rgba(255, 255, 255, 0.7);
+ padding: 8px 10px;
+ border-radius: 8px;
+}
+
+.bold {
+ font-weight: 700;
+}
+
+.bold-italic {
+ font-style: italic;
+ font-weight: 700;
+}
+
+.tooltip-link,
+.tooltip-link:visited {
+  color: rgb(172,225,175);
+  font-weight: 700;
+}
+
+.tooltip-link {
+  position: relative;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* the popup */
+.tooltip-link .tooltip-box {
+  position: absolute;
+  left: 50%;
+  bottom: 140%;
+  transform: translateX(-50%);
+
+  background: rgba(255, 255, 255, 0.7);
+  color: black;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+}
+
+/* show on hover + keyboard focus */
+.tooltip-link:hover .tooltip-box,
+.tooltip-link:focus .tooltip-box {
+  opacity: 1;
+}
+
+
 header {
   margin: auto;
 }
@@ -99,6 +212,59 @@ nav a:hover {
   display: block;
 }
 
+/* footer{
+
+} */
+
 body {
  background-color: rgb(244, 244, 236);
 }
+
+/* ===== Book Now Popup ===== */
+.popup-overlay {
+  display: none;               /* hidden by default */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99999;
+}
+
+.popup-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 10px 0px 29px 30px;
+  width: min(390px, 90vw);
+  margin: 18vh auto 0;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.popup-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  color: black;
+  background: rgb(172, 225, 175); /* your green */
+}
+
+.popup-button:hover {
+  background: rgb(255, 229, 180); /* your hover accent */
+}
+
