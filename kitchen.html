@@ -4,14 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌷 Fresh Blüme Cleaning Service</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Fresh Blüme Cleaning Service</title>
+    <link rel="stylesheet" href="kitchen.css">
+    <link rel="stylesheet" href="legal.css">
 </head>
-<body>
+<body id="back-top">
     <header class="header-wrapper">        
         <div class="header-content">
             <div class="logo">
-                <img src="fresh_blume_logo.png" alt="Fresh Blüme Cleaning Service Logo">
+                <a href="index.html" aria-label="Go to homepage">
+                    <img src="fresh_blume_logo.png" alt="Fresh Blüme Cleaning Service Logo">
+                </a>
+            </div>
+            <div class="home-biz">
+                <h2>Serving Homes and Businesses Across Salt Lake County</h2>
             </div>
             <nav class="nav">
                 <ul>
@@ -32,6 +38,154 @@
     <main>
         
     </main>
+    <footer>
+        <div>
+            <a href="#back-top" class="jump-top">BACK TO TOP</a>
+        </div>
+    
+        <div class="social-media">
+            <a class="phone" href="tel:812-375-4664">📞 (812)-375-4664</a>
+            <a href="mailto:freshblume801@gmail.com" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="gmail-logo.png" alt="Gmail Logo" class="social-media-logo">
+                <span>Email</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/zo%C3%AB-t-906172242?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVeBdq0mbSfak11LLrr7N5Q%3D%3D" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="linkedin-logo.png" alt="LinkedIn Logo" class="social-media-logo">
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="https://www.instagram.com/freshblume801/#" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="ig-logo.svg" alt="Instagram Logo" class="social-media-logo">
+                <span>Instagram</span>
+            </a>
+        </div>
+        <div class="legal-link">
+            <a href="legal.html" target="_blank" rel="noopener noreferrer">Legal Pages</a>
+        </div>
+
+    </footer>
+
+    <!-- Book Now Popup -->
+<div id="book-popup" class="popup-overlay" aria-hidden="true">
+  <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup-close" aria-label="Close popup">&times;</button>
+
+    <h2 id="popup-title">Ready to book?</h2>
+    <p>Click below to book your Fresh Blüme appointment.</p>
+
+    <a id="popup-book-now" class="popup-button" href="booking.html">Book Now</a>
+  </div>
+</div>
+
+<script>
+  // ===== Don't run on booking page =====
+  if (!window.location.pathname.includes("booking.html")) {
+
+    const popup = document.getElementById("book-popup");
+    const closeBtn = popup.querySelector(".popup-close");
+    const bookNowBtn = document.getElementById("popup-book-now");
+
+    const STEP_MS = 180000; // 3 minutes
+
+    // sessionStorage keys
+    const KEY_TOTAL = "fb_total_ms";          // accumulated time across pages
+    const KEY_TARGET = "fb_next_target_ms";   // next time threshold to show popup
+    const KEY_COUNT = "fb_popup_count";       // times shown (max 2)
+    const KEY_DISABLED = "fb_popup_disabled"; // set true if Book Now clicked
+
+    const getNum = (k, fallback = 0) => Number(sessionStorage.getItem(k)) || fallback;
+    const setNum = (k, v) => sessionStorage.setItem(k, String(v));
+
+    // If already disabled (Book Now clicked earlier), stop
+    if (sessionStorage.getItem(KEY_DISABLED) !== "true") {
+
+      // Initialize if missing
+      if (!sessionStorage.getItem(KEY_TOTAL)) setNum(KEY_TOTAL, 0);
+      if (!sessionStorage.getItem(KEY_TARGET)) setNum(KEY_TARGET, STEP_MS);
+      if (!sessionStorage.getItem(KEY_COUNT)) setNum(KEY_COUNT, 0);
+
+      const pageStart = Date.now();
+
+      function currentTotalMs() {
+        const totalBefore = getNum(KEY_TOTAL, 0);
+        const onThisPage = Date.now() - pageStart;
+        return totalBefore + onThisPage;
+      }
+
+      let intervalId = null;
+
+      function openPopup() {
+        popup.style.display = "block";
+        popup.setAttribute("aria-hidden", "false");
+
+        const count = getNum(KEY_COUNT, 0) + 1;
+        setNum(KEY_COUNT, count);
+
+        // Stop checking after 2nd show
+        if (count >= 2 && intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      }
+
+      function closePopup() {
+        popup.style.display = "none";
+        popup.setAttribute("aria-hidden", "true");
+
+        // If it has shown exactly once, schedule ONE more after another 3 min total time
+        const count = getNum(KEY_COUNT, 0);
+        if (count === 1) {
+          setNum(KEY_TARGET, currentTotalMs() + STEP_MS);
+        }
+      }
+
+      function maybeShowPopup() {
+        if (sessionStorage.getItem(KEY_DISABLED) === "true") return;
+
+        if (popup.style.display === "block") return;
+
+        const count = getNum(KEY_COUNT, 0);
+        if (count >= 2) return;
+
+        const target = getNum(KEY_TARGET, STEP_MS);
+        if (currentTotalMs() >= target) {
+          openPopup();
+        }
+      }
+
+      // Check once per second
+      intervalId = setInterval(maybeShowPopup, 1000);
+
+      // Add this page's time into total when leaving the page
+      window.addEventListener("beforeunload", () => {
+        const totalBefore = getNum(KEY_TOTAL, 0);
+        const onThisPage = Date.now() - pageStart;
+        setNum(KEY_TOTAL, totalBefore + onThisPage);
+      });
+
+      // Close actions
+      closeBtn.addEventListener("click", closePopup);
+
+      popup.addEventListener("click", (e) => {
+        if (e.target === popup) closePopup();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePopup();
+      });
+
+      // Book Now disables all future popups (also stops the 2nd one)
+      bookNowBtn.addEventListener("click", () => {
+        sessionStorage.setItem(KEY_DISABLED, "true");
+        if (intervalId) clearInterval(intervalId);
+      });
+
+      // Run immediately in case they've already accumulated time
+      maybeShowPopup();
+    }
+  }
+</script>
 </body>
 
 </html>

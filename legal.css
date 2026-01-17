@@ -1,0 +1,30 @@
+h1 {
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.legal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 25px;
+    margin-left: 20px;
+    margin-top: 90px;
+}
+
+.legal a {
+    /* text-decoration: none; */
+    color: blue;
+    line-height: 1.2;
+}
+
+.legal a:hover,
+.legal a:focus {
+    color: blue;
+}
+
+.legal a:hover {
+    color: blue;
+    font-weight: 700;
+}

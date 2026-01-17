@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌷 Fresh Blüme Cleaning Service</title>
+    <title>Fresh Blüme Cleaning Service</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="legal.css">
 </head>
+<!-- COPY BELOW ID  -->
 <body id="back-top">
     <header class="header-wrapper">        
         <div class="header-content">
             <div class="logo">
                 <img src="fresh_blume_logo.png" alt="Fresh Blüme Cleaning Service Logo">
-            </div>
+            </div>    
+            <div class="home-biz">
+                <h2>Serving Homes and Businesses Across Salt Lake County</h2>
+            </div>        
             <nav class="nav">
                 <ul>
                     <li><a href="index.html" class="active">Services Offered</a></li>
@@ -31,16 +37,16 @@
     </header>
     <main>
         <div>            
-            <h1>All services start at $50/hr - Additional $5/hr per animal living in space</h1>
+            <h1 class="service-title">All services start at $50/hr - Additional $5/hr per animal living in space</h1>
         </div>
-        <div class="services-wrapper">            
+        <div>            
             <div class="spacer">
                 <h2>🌷 Deep Clean (3 hour minimum)</h2>
-                    <ul class="my-bullet main-text">
+                    <ul class="no-bullet main-text">
                         <li>• <span class="bold">Required</span> for all future routine clients</li>
                         <li>• Deep cleans are for tackling hard to reach areas and establishing a foundation 
                             for easier maintenance, including but not limited to:</li>
-                        <ul class="my-bullet">
+                        <ul class="no-bullet">
                             <li>✓ Under/behind couches</li>
                             <li>✓ Baseboards</li>
                             <li>✓ Cabinets</li>
@@ -50,7 +56,7 @@
                             <li>✓ Blinds</li>
                             <li>✓ Ceiling cobwebs</li>
                         </ul>
-                        <li class="my-bullet">• Deep Cleans entail all of our services <span class="bold-italic">excluding </span>the list of add-on
+                        <li class="no-bullet">• Deep Cleans entail all of our services <span class="bold-italic">excluding </span>the list of add-on
                         <a href="#add-on" class="tooltip-link">
                         options
                         <span class="tooltip-box">
@@ -70,7 +76,7 @@
             <h2>🌷 One Time/Customized Cleaning (Estimate required)</h2>
                 <p class="indent main-text">You can pick and choose what services you want to fit your specific needs.</p>
                 <p class="indent main-text">This option is for:</p>
-                    <ul class="my-bullet indent main-text">
+                    <ul class="no-bullet indent main-text">
                         <li>• Move-in/out</li>
                         <li>• Party clean up</li>
                         <li>• Irregular routines</li>
@@ -79,7 +85,7 @@
         </div>
         <div class="spacer">            
             <h2>🌷 What to expect from a Fresh Blume Appointment:</h2>
-            <ul class="my-bullet main-text">
+            <ul class="no-bullet main-text">
                 <li>✓ Dusted surfaces, furniture and displays</li>
                 <li>✓ Clean baseboards and windowsills</li>
                 <li>✓ Dust-free ceiling fans</li>
@@ -101,7 +107,7 @@
     </div>
     <div class="spacer">            
         <h2 id="add-on">🌷 Add-on List:</h2>
-        <ul class="my-bullet main-text">
+        <ul class="no-bullet main-text">
                 <li>+ Spot treat carpet - $50</li>
                 <li>+ Polish tiles and/or hardwood floors - $25</li>
                 <li>+ Steam Cleaning - $50</li>
@@ -119,9 +125,37 @@
         </div>
     </div>
     </main>
+
+    <!-- COPY BELOW THIS TO EVERY PAGE!!! -->
+
     <footer>
-       <div><a href="#back-top" class="jump-top">BACK TO TOP</a></div> 
+        <div>
+            <a href="#back-top" class="jump-top">BACK TO TOP</a>
+        </div>
+    
+        <div class="social-media">
+            <a class="phone" href="tel:812-375-4664">📞 (812)-375-4664</a>
+            <a href="mailto:freshblume801@gmail.com" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="gmail-logo.png" alt="Gmail Logo" class="social-media-logo">
+                <span>Email</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/zo%C3%AB-t-906172242?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVeBdq0mbSfak11LLrr7N5Q%3D%3D" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="linkedin-logo.png" alt="LinkedIn Logo" class="social-media-logo">
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="https://www.instagram.com/freshblume801/#" class="social-item" target="_blank" rel="noopener noreferrer">
+                <img src="ig-logo.svg" alt="Instagram Logo" class="social-media-logo">
+                <span>Instagram</span>
+            </a>
+        </div>
+        <div class="legal-link">
+            <a href="legal.html" target="_blank" rel="noopener noreferrer">Legal Pages</a>
+        </div>
+
     </footer>
+
     <!-- Book Now Popup -->
 <div id="book-popup" class="popup-overlay" aria-hidden="true">
   <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
@@ -199,6 +233,8 @@
       function maybeShowPopup() {
         if (sessionStorage.getItem(KEY_DISABLED) === "true") return;
 
+        if (popup.style.display === "block") return;
+
         const count = getNum(KEY_COUNT, 0);
         if (count >= 2) return;
 
@@ -240,6 +276,8 @@
     }
   }
 </script>
+
+<!-- END PAGE COPYING HERE -->
 
 </body>
 
